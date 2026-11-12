@@ -1,0 +1,9 @@
+{
+  "name": "lean/php-fixture",
+  "description": "Valid PHP package fixture",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^8.2"
+  }
+}

@@ -1,0 +1,62 @@
+name: 'lean-packages Action'
+description: 'Unified GitHub Action for linting package distribution contents across PHP, Ruby, Rust, Python, JavaScript, and Zig.'
+author: 'lean-packages'
+branding:
+  icon: 'package'
+  color: 'blue'
+
+inputs:
+  ecosystem:
+    description: 'Ecosystem to lint: auto, php, ruby, rust, python, javascript, or zig.'
+    required: false
+    default: 'auto'
+  path:
+    description: 'Project directory to inspect and use as the working directory.'
+    required: false
+    default: '.'
+  command:
+    description: 'Native tool command to execute. Currently only lint is supported.'
+    required: false
+    default: 'lint'
+  php-version:
+    description: 'Version of php-lean to install.'
+    required: false
+    default: 'latest'
+  ruby-version:
+    description: 'Version of ruby-lean to install.'
+    required: false
+    default: 'latest'
+  rust-version:
+    description: 'Version of cargo-lean to install.'
+    required: false
+    default: 'latest'
+  python-version:
+    description: 'Version of py-lean to install.'
+    required: false
+    default: 'latest'
+  javascript-version:
+    description: 'Version of js-lean to install.'
+    required: false
+    default: 'latest'
+  zig-version:
+    description: 'Version of zig-lean to install.'
+    required: false
+    default: 'latest'
+  args:
+    description: 'Additional arguments forwarded to each native lint command.'
+    required: false
+    default: ''
+  github-token:
+    description: 'GitHub token for API rate limiting and release queries.'
+    required: false
+    default: '${{ github.token }}'
+
+outputs:
+  detected-ecosystems:
+    description: 'Comma-separated list of detected or executed ecosystems.'
+  tool-versions:
+    description: 'JSON object mapping executed ecosystems to resolved tool versions.'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

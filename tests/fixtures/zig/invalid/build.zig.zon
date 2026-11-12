@@ -1,0 +1,4 @@
+.{
+    .name = "invalid-zig",
+    .version = "0.1.0",
+}
